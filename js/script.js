@@ -7,3 +7,14 @@ Quello che devo eseguire in questo script:
 4) Calcolo finale
 */
 
+//Costo del lavoro
+const jobCost = {
+    backend: 20.50,
+    frontend: 15.30,
+    analysis: 33.60
+};
+
+// Codici promozionali validi
+const promoCodes = ['YHDNU32', 'JANJC63', 'PWKCN25', 'SJDPO96', 'POCIE24'];
+
+
