@@ -10,10 +10,10 @@ Quello che devo eseguire in questo script:
 1) Calcolo e risultato funzionante
 - To fix
 1) Sistemare allineamenti e paragrafo elementi e provare ad applicare il loader nel bottone
-2) Validazione codice sconto 
+2) Validazione codice sconto partendo dall' array che ho definito
 */
 
-
+const promoCode = ["YHDNU32", "JANJC63", "PWKCN25", "SJDPO96", "POCIE24"];
 
 // Funzione per calcolare il prezzo finale (test)
 
