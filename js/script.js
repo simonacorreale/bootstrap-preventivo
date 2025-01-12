@@ -14,7 +14,7 @@ const jobCost = {
     analysis: 33.60
 };
 
-// Codici promozionali validi
+// Codici promozionali validi da controllare
 const promoCodes = ['YHDNU32', 'JANJC63', 'PWKCN25', 'SJDPO96', 'POCIE24'];
 
 
