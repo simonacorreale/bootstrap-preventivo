@@ -83,42 +83,34 @@
                         </div>
                         <!--Comment area-->
                         <!--Promo code-->
-
                         <div class="mb-3 mt-3">
                             <label for="promo-code" class="form-label">Codice promozionale (opzionale)</label>
-                            <input type="text" class="form-control is-valid is-invalid" id="promo-code"
-                                value="insert promo code" required>
-                            <div class="valid-feedback">
-                                Looks good!
+                            <input type="TEXT" class="form-control" id="promo-code" aria-describedby="promo code">
+                        </div>
+                        <!--Promo code-->
+                        <!--Termini e condizioni-->
+                        <div class="mb-3 form-check mt-3">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                            <label class="form-check-label" for="exampleCheck1">Accetta privacy policy</label>
+                        </div>
+                        <!--Termini e condizioni-->
+                        <!--CTA + CALC-->
+                        <div
+                            class="container p-5 d-flex flex-column flex-md-row justify-content-between mb-3 text-center">
+                            <div>
+                                <button id="calc-button" class="btn btn-primary" type="submit">
+                                    <span id="spinner" class="d-none spinner-border spinner-border-sm"
+                                        aria-hidden="true"></span>
+                                    <span class="status" role="status">Calcola preventivo</span>
+                                </button>
                             </div>
-                            <div class="invalid-feedback">
-                                Looks good!
+                            <div>
+                                <h5>Prezzo Finale</h5>
+                                <p id="result"></p>
+                                <p id="paragraph-label"></p>
                             </div>
-
-                            <!--Promo code-->
-                            <!--Termini e condizioni-->
-                            <div class="mb-3 form-check mt-3">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
-                                <label class="form-check-label" for="exampleCheck1">Accetta privacy policy</label>
-                            </div>
-                            <!--Termini e condizioni-->
-                            <!--CTA + CALC-->
-                            <div
-                                class="container p-5 d-flex flex-column flex-md-row justify-content-between mb-3 text-center">
-                                <div>
-                                    <button id="calc-button" class="btn btn-primary" type="submit">
-                                        <span id="spinner" class="d-none spinner-border spinner-border-sm"
-                                            aria-hidden="true"></span>
-                                        <span class="status" role="status">Calcola preventivo</span>
-                                    </button>
-                                </div>
-                                <div>
-                                    <h5>Prezzo Finale</h5>
-                                    <p id="result"></p>
-                                    <p id="paragraph-label"></p>
-                                </div>
-                            </div>
-                            <!--CTA + CALC-->
+                        </div>
+                        <!--CTA + CALC-->
                     </form>
                 </div>
                 <!--Card-->

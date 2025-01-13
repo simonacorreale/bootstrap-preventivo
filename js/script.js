@@ -77,11 +77,12 @@ calcButton.addEventListener('click', function (event) {
     resultParagraph.textContent = `EUR: ${result}`;
 
     if (isValidCode) {
-        input.classList.remove('is-invalid');
-        input.classList.add('is-valid');
+
+        promoCodeInput.classList.remove('is-invalid');
+        promoCodeInput.classList.add('is-valid');
 
     } else {
-        input.classList.remove('is-valid');
-        input.classList.add('is-invalid');
+        promoCodeInput.classList.remove('is-valid');
+        promoCodeInput.classList.add('is-invalid');
     }
 });
