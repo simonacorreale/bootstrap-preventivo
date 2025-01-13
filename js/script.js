@@ -10,21 +10,16 @@ Quello che devo eseguire in questo script:
 Per la validazione codice:
 1) Creare una lista di codici validi.
 2) Verificare se il codice inserito è presente nella lista.
-3)Applicare lo sconto del 20% se il codice è valido.
-
-- Done
-1) Calcolo e risultato funzionante
-- To fix
-1) Sistemare allineamenti e paragrafo elementi e provare ad applicare il loader nel bottone
-2) Validazione codice sconto partendo dall' array che ho definito
+3) Applicare lo sconto del 20% se il codice è valido.
+4) Segnalare se il codice non è valido.
+5) 
 */
 
+// Array di codice inserito
 const promoCode = ["YHDNU32", "JANJC63", "PWKCN25", "SJDPO96", "POCIE24"];
 
-// Funzione per calcolare il prezzo finale (test)
-
-function finalCalc(finalWork, hours = 10) {
-
+// Funzione per calcolare il prezzo finale (test con sconto)
+function finalCalc(finalWork, hours = 10, discount = false) {
     let workTime;
 
     switch (finalWork.toLowerCase()) {
@@ -39,12 +34,18 @@ function finalCalc(finalWork, hours = 10) {
             break;
     }
 
-    return (workTime * hours).toFixed(2) + '€';
+    let total = workTime * hours;
+
+    if (discount) {
+        total *= 0.8;
+    }
+    return total.toFixed(2) + '€';
 }
 
 console.log(finalCalc('backend', 10));
 console.log(finalCalc('frontend', 10));
 console.log(finalCalc('analisi', 10));
+
 
 // Collego gli elementi HTML 
 const workTypeSelect = document.getElementById('work-type');
@@ -56,13 +57,31 @@ console.log(calcButton);
 const resultParagraph = document.getElementById('result');
 console.log(resultParagraph);
 
+const resultParagraphLabel = document.getElementById('paragraph-label');
+console.log(resultParagraphLabel);
 
-// risultato 10 ore fisse
+const promoCodeInput = document.getElementById('promo-code');
+console.log(promoCodeInput);
+
+
+// risultato 10 ore fisse + check sul buono elementi html 
 calcButton.addEventListener('click', function (event) {
     event.preventDefault();
 
     const selectedWork = workTypeSelect.value;
-    const result = finalCalc(selectedWork);
-    resultParagraph.textContent = `EUR: ${result}`;
-});
+    const enteredCode = promoCodeInput.value.trim().toUpperCase();
+    const isValidCode = promoCode.includes(enteredCode);
 
+    const result = finalCalc(selectedWork, 10, isValidCode);
+
+    resultParagraph.textContent = `EUR: ${result}`;
+
+    if (isValidCode) {
+        input.classList.remove('is-invalid');
+        input.classList.add('is-valid');
+
+    } else {
+        input.classList.remove('is-valid');
+        input.classList.add('is-invalid');
+    }
+});
