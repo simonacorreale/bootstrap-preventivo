@@ -27,7 +27,7 @@
                         <a class="nav-link" href="#">Servizi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Help</a>
+                        <a class="nav-link" href="#">Contatti</a>
                     </li>
                 </ul>
             </div>
@@ -64,9 +64,10 @@
                         </div>
                         <!--Email-->
                         <!--Select-->
+
                         <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Tipo di lavoro</label>
-                            <select id="work-type" aria-label="Default select example">
+                            <label for="infolabel" class="form-label">Tipo di lavoro</label>
+                            <select id="work-type" class="form-select" aria-label="Default select example">
                                 <option value="backend">Sviluppo backend</option>
                                 <option value="frontend">Sviluppo frontend</option>
                                 <option value="analisi">Analisi progettuale</option>
@@ -108,8 +109,13 @@
                             </div>
                             <div>
                                 <h5>Prezzo Finale</h5>
-                                <p id="result"></p>
-                                <p id="paragraph-label"></p>
+                                <div class="d-flex justify-content-start">
+                                    <strong>
+                                        <h3 id="result-int" class=" ms-3">
+                                        </h3>
+                                    </strong>
+                                    <h3 id="result-dec"></h3>
+                                </div>
                             </div>
                         </div>
                         <!--CTA + CALC-->

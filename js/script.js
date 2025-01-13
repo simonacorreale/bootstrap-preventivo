@@ -32,6 +32,8 @@ function finalCalc(finalWork, hours = 10, discount = false) {
         case 'analisi':
             workTime = 33.60;
             break;
+        default:
+            workTime = 0;
     }
 
     let total = workTime * hours;
@@ -39,8 +41,17 @@ function finalCalc(finalWork, hours = 10, discount = false) {
     if (discount) {
         total *= 0.8;
     }
-    return total.toFixed(2) + '€';
-}
+
+    const intPart = document.getElementById("result-int");
+    console.log(intPart);
+    const intDec = document.getElementById("result-dec");
+    console.log(intDec);
+    const [parteIntera, parteDecimale] = total.toFixed(2).split(".");
+
+    intPart.textContent = parteIntera;
+    intDec.textContent = parteDecimale;
+
+};
 
 console.log(finalCalc('backend', 10));
 console.log(finalCalc('frontend', 10));
@@ -54,13 +65,11 @@ console.log(workTypeSelect);
 const calcButton = document.getElementById('calc-button');
 console.log(calcButton);
 
-const resultParagraph = document.getElementById('result');
+const resultParagraph = document.getElementById('result-int');
 console.log(resultParagraph);
 
 const validFeedback = document.getElementById('valid-feedback');
 console.log(validFeedback);
-
-const resultParagraphLabel = document.getElementById('paragraph-label')
 
 const invalidFeedback = document.getElementById('invalid-feedback');
 console.log(invalidFeedback);
@@ -68,8 +77,6 @@ console.log(invalidFeedback);
 const promoCodeInput = document.getElementById('promo-code');
 console.log(promoCodeInput);
 
-
-// risultato 10 ore fisse + check sul buono elementi html 
 calcButton.addEventListener('click', function (event) {
     event.preventDefault();
 
@@ -77,13 +84,10 @@ calcButton.addEventListener('click', function (event) {
     const enteredCode = promoCodeInput.value.trim().toUpperCase();
     const isValidCode = promoCode.includes(enteredCode);
 
-    const result = finalCalc(selectedWork, 10, isValidCode);
-
-    resultParagraph.textContent = `EUR: ${result}`;
+    finalCalc(selectedWork, 10, isValidCode);
 
     if (enteredCode === '') {
         promoCodeInput.classList.remove('is-valid', 'is-invalid');
-        resultParagraphLabel.textContent = 'nessun buono';
     } else if (isValidCode) {
         promoCodeInput.classList.add('is-valid');
         promoCodeInput.classList.remove('is-invalid');
