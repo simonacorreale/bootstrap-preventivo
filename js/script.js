@@ -76,14 +76,16 @@ calcButton.addEventListener('click', function (event) {
 
     resultParagraph.textContent = `EUR: ${result}`;
 
-    if (isValidCode) {
-
-        promoCodeInput.classList.add('is-valid');
-
+    if (enteredCode === '') {
+        promoCodeInput.classList.remove('is-valid', 'is-invalid');
+        resultParagraphLabel.textContent = 'nessun buono';
     } else if (isValidCode) {
-        promoCodeInput.classList.add('is-invalid');
-
+        promoCodeInput.classList.add('is-valid');
+        promoCodeInput.classList.remove('is-invalid');
+        resultParagraphLabel.textContent = 'promo code valid';
     } else {
-        resultParagraphLabel.textContent = ('nessun promo code');
-    };
+        promoCodeInput.classList.add('is-invalid');
+        promoCodeInput.classList.remove('is-valid');
+        resultParagraphLabel.textContent = 'promo code not valid';
+    }
 });
