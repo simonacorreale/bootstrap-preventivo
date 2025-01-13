@@ -78,10 +78,12 @@ calcButton.addEventListener('click', function (event) {
 
     if (isValidCode) {
 
-        promoCodeInput.classList.remove('is-invalid');
         promoCodeInput.classList.add('is-valid');
 
+    } else if (isValidCode) {
+        promoCodeInput.classList.add('is-invalid');
+
     } else {
-        resultParagraphLabel.textContent = ('No promo code');
-    }
+        resultParagraphLabel.textContent = ('nessun promo code');
+    };
 });
