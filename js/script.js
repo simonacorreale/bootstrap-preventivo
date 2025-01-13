@@ -57,8 +57,13 @@ console.log(calcButton);
 const resultParagraph = document.getElementById('result');
 console.log(resultParagraph);
 
-const resultParagraphLabel = document.getElementById('paragraph-label');
-console.log(resultParagraphLabel);
+const validFeedback = document.getElementById('valid-feedback');
+console.log(validFeedback);
+
+const resultParagraphLabel = document.getElementById('paragraph-label')
+
+const invalidFeedback = document.getElementById('invalid-feedback');
+console.log(invalidFeedback);
 
 const promoCodeInput = document.getElementById('promo-code');
 console.log(promoCodeInput);
@@ -82,10 +87,10 @@ calcButton.addEventListener('click', function (event) {
     } else if (isValidCode) {
         promoCodeInput.classList.add('is-valid');
         promoCodeInput.classList.remove('is-invalid');
-        resultParagraphLabel.textContent = 'promo code valid';
+        validFeedback.textContent = 'Codice promo valido';
     } else {
         promoCodeInput.classList.add('is-invalid');
         promoCodeInput.classList.remove('is-valid');
-        resultParagraphLabel.textContent = 'promo code not valid';
+        invalidFeedback.textContent = 'Codice non valido';
     }
 });
