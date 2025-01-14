@@ -12,7 +12,11 @@ Per la validazione codice:
 2) Verificare se il codice inserito è presente nella lista.
 3) Applicare lo sconto del 20% se il codice è valido.
 4) Segnalare se il codice non è valido.
-5) 
+
+Per il loader
+1) Al click del bottone calcola preventivo compare un loader di qualche secondo
+2) compare il risultato
+3) il bottone diventa grigio fino a che non si modifica nuovamente il form
 */
 
 // Array di codice inserito
@@ -42,14 +46,19 @@ function finalCalc(finalWork, hours = 10, discount = false) {
         total *= 0.8;
     }
 
-    const intPart = document.getElementById("result-int");
-    console.log(intPart);
-    const intDec = document.getElementById("result-dec");
-    console.log(intDec);
-    const [parteIntera, parteDecimale] = total.toFixed(2).split(".");
+    const totalPrice = total.toFixed(2);
+    const formattedPrice = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
+        totalPrice);
+    console.log(formattedPrice);
+    const resultInt = document.getElementById("result-int");
+    const resultDec = document.getElementById("result-dec");
+    const divisionNumber = formattedPrice.split(",");
+    console.log(divisionNumber);
 
-    intPart.textContent = parteIntera;
-    intDec.textContent = parteDecimale;
+    resultInt.textContent = divisionNumber[0];
+    console.log(resultInt);
+    resultDec.textContent = `,${divisionNumber[1]}`;
+    console.log(resultDec);
 
 };
 
