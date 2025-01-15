@@ -45,16 +45,18 @@ function finalCalc(finalWork, hours = 10, discount = false) {
     if (discount) {
         total *= 0.8;
     }
-
+    // Inserisco il risultato in forma umana
     const totalPrice = total.toFixed(2);
     const formattedPrice = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
         totalPrice);
     console.log(formattedPrice);
+
+    // Collego gli elementi html
     const resultInt = document.getElementById("result-int");
     const resultDec = document.getElementById("result-dec");
     const divisionNumber = formattedPrice.split(",");
     console.log(divisionNumber);
-
+    // Cambio lo stile delgi elementi separandoli
     resultInt.textContent = divisionNumber[0];
     console.log(resultInt);
     resultDec.textContent = `,${divisionNumber[1]}`;
@@ -95,18 +97,20 @@ console.log(invalidFeedbackMail);
 const submitButton = document.querySelector('#calc-button');
 console.log(submitButton);
 
+
 const resultMessage = document.getElementById("results-message")
 
 calcButton.addEventListener('click', function (event) {
     event.preventDefault();
+
     const spinnerEl = submitButton.querySelector('#spinner')
     const statusSpan = submitButton.querySelector('.status');
     const originalTextStatus = statusSpan.innerHTML;
-
     // Status base del bottone
     submitButton.disabled = true;
     spinnerEl.classList.remove('d-none')
     statusSpan.innerHTML = 'Loading...'
+    resultMessage.classList.add('d-none')
 
     // Recupero dei valori inseriti
     const selectedWork = workTypeSelect.value;
@@ -118,7 +122,7 @@ calcButton.addEventListener('click', function (event) {
 
     finalCalc(selectedWork, 10, isValidCode);
 
-    // Codice validazione tramite regex
+    // Codice validazione
     if (enteredCode === '') {
         promoCodeInput.classList.remove('is-valid', 'is-invalid');
     } else if (isValidCode) {
@@ -148,5 +152,6 @@ calcButton.addEventListener('click', function (event) {
         statusSpan.innerHTML = originalTextStatus;   // Ripristina il testo del bottone
         submitButton.disabled = false;              // Riabilita il bottone
         console.log("Loader completato");
+        resultMessage.classList.remove('d-none')
     }, 1000);
 });
