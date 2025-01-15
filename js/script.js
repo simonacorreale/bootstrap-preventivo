@@ -86,24 +86,67 @@ console.log(invalidFeedback);
 const promoCodeInput = document.getElementById('promo-code');
 console.log(promoCodeInput);
 
+const validFeedbackMail = document.getElementById('valid-feedback-mail');
+console.log(validFeedbackMail);
+
+const invalidFeedbackMail = document.getElementById('invalid-feedback-mail');
+console.log(invalidFeedbackMail);
+
+const submitButton = document.querySelector('#calc-button');
+console.log(submitButton);
+
+const resultMessage = document.getElementById("results-message")
+
 calcButton.addEventListener('click', function (event) {
     event.preventDefault();
+    const spinnerEl = submitButton.querySelector('#spinner')
+    const statusSpan = submitButton.querySelector('.status');
+    const originalTextStatus = statusSpan.innerHTML;
 
+    // Status base del bottone
+    submitButton.disabled = true;
+    spinnerEl.classList.remove('d-none')
+    statusSpan.innerHTML = 'Loading...'
+
+    // Recupero dei valori inseriti
     const selectedWork = workTypeSelect.value;
     const enteredCode = promoCodeInput.value.trim().toUpperCase();
     const isValidCode = promoCode.includes(enteredCode);
+    const emailInput = document.getElementById('valid-email');
+    const emailValue = emailInput.value.trim();
+    const regex = /^[a-zA-Z0-9._%+-]+@gmail\.(com|it)$/;
 
     finalCalc(selectedWork, 10, isValidCode);
 
+    // Codice validazione tramite regex
     if (enteredCode === '') {
         promoCodeInput.classList.remove('is-valid', 'is-invalid');
     } else if (isValidCode) {
         promoCodeInput.classList.add('is-valid');
         promoCodeInput.classList.remove('is-invalid');
-        validFeedback.textContent = 'Codice promo valido';
+        validFeedback.textContent = 'Codice promo valido'
     } else {
         promoCodeInput.classList.add('is-invalid');
         promoCodeInput.classList.remove('is-valid');
         invalidFeedback.textContent = 'Codice non valido';
     }
+
+    // Email validazione tramite regex
+    if (regex.test(emailValue)) {
+        emailInput.classList.add('is-valid');
+        emailInput.classList.remove('is-invalid');
+        validFeedbackMail.textContent = 'Mail corretta';
+    } else {
+        emailInput.classList.add('is-invalid');
+        emailInput.classList.remove('is-valid');
+        invalidFeedbackMail.textContent = 'Il formato della mail non è corretto o la mail non è inserita';
+    }
+
+    // Simulazione del caricamento (1 secondo)
+    setTimeout(() => {
+        spinnerEl.classList.add('d-none');           // Nasconde lo spinner
+        statusSpan.innerHTML = originalTextStatus;   // Ripristina il testo del bottone
+        submitButton.disabled = false;              // Riabilita il bottone
+        console.log("Loader completato");
+    }, 1000);
 });

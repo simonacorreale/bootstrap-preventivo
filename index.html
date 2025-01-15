@@ -57,13 +57,22 @@
                         <!--Cognome-->
                         <!--Email-->
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" required>
+                            <label for="valid-email" class="form-label">Indirizzo Email</label>
+                            <input type="email" class="form-control" id="valid-email" aria-describedby="emailHelp"
+                                required>
+
+                            <!-- Feedback positivo -->
+                            <div id="valid-feedback-mail" class="valid-feedback">
+                                La mail è corretta!
+                            </div>
+
+                            <!-- Feedback negativo -->
+                            <div id="invalid-feedback-mail" class="invalid-feedback">
+                                Il formato della mail non è corretto o la mail non è inserita.
+                            </div>
                         </div>
                         <!--Email-->
                         <!--Select-->
-
                         <div class="mb-3">
                             <label for="infolabel" class="form-label">Tipo di lavoro</label>
                             <select id="work-type" class="form-select" aria-label="Default select example" required>
@@ -101,12 +110,12 @@
                                 <button id="calc-button" class="btn btn-primary" type="submit">
                                     <span id="spinner" class="d-none spinner-border spinner-border-sm"
                                         aria-hidden="true"></span>
-                                    <span class="status" role="status">Calcola preventivo</span>
+                                    <span class="status" role="status">Calcola prezzo</span>
                                 </button>
                             </div>
                             <div>
                                 <h5>Prezzo Finale</h5>
-                                <div class="d-flex justify-content-start">
+                                <div id="results-message" class="d-flex justify-content-start">
                                     <strong>
                                         <span id="result-int"></span>
                                     </strong>
