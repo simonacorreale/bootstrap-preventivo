@@ -101,8 +101,6 @@ console.log(submitButton);
 
 const resultMessage = document.getElementById("results-message")
 
-const checBox = document.getElementById('required-check');
-
 
 calcButton.addEventListener('click', function (event) {
     event.preventDefault();
@@ -115,7 +113,6 @@ calcButton.addEventListener('click', function (event) {
     const isValidCode = promoCode.includes(enteredCode);
 
     const emailInput = document.getElementById('valid-email');
-
     const emailValue = emailInput.value.trim();
     console.log(emailValue);
 
@@ -135,6 +132,7 @@ calcButton.addEventListener('click', function (event) {
     let isValid = true;
 
     // Validazione nome
+
     if (nameInput.value.trim() === '') {
         nameInput.classList.add('is-invalid');
         isValid = false;
@@ -174,20 +172,12 @@ calcButton.addEventListener('click', function (event) {
         emailInput.classList.remove('is-invalid');
         validFeedbackMail.textContent = 'Mail corretta';
 
-        // Abilita il risultato se valido 
+
         calcButton.disabled = false;
     } else {
         emailInput.classList.add('is-invalid');
         emailInput.classList.remove('is-valid');
         invalidFeedbackMail.textContent = 'Il formato della mail non è corretto o la mail non è inserita';
-    }
-
-    // check su mail nome e cognome
-    if (emailValue && nameInput.value.trim() && surnameInput.value.trim() && checBox()) {
-        resultMessage.classList.remove('d-none');
-
-    } else {
-        resultMessage.classList.add('d-none');
     }
 
     if (!checkBox.checked) {
@@ -200,6 +190,12 @@ calcButton.addEventListener('click', function (event) {
         checkBoxFeedback.textContent = '';
     }
 
+    // Abilita il risultato se valido 
+    if (isValid && checkBox.checked && emailValue && nameInput.value.trim() && surnameInput.value.trim()) {
+        resultMessage.classList.remove('d-none');
+    } else {
+        resultMessage.classList.add('d-none');
+    }
 
 });
 
