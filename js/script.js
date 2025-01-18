@@ -104,24 +104,6 @@ const spinnerEl = submitButton.querySelector('#spinner')
 const statusSpan = submitButton.querySelector('.status');
 const originalTextStatus = statusSpan.innerHTML;
 
-/* // Status base del bottone
-submitButton.disabled = true;
-spinnerEl.classList.remove('d-none')
-statusSpan.innerHTML = 'Loading...'
-// timeout
-setTimeout(() => {
-
-    spinnerEl.classList.add('d-none')
-    statusSpan.innerHTML = originalTextStatus
-    submitButton.disabled = false;
-    resultMessage.innerHTML = `$ ${finalPrice}`;
-
-    if (isNaN(finalPrice)) {
-        resultMessage.innerHTML = "Nessun prezzo stimato";
-    }
-    console.log("loaderTimer")
-}, "1000"); */
-
 function loaderButton() {
 
     submitButton.disabled = true;
@@ -139,13 +121,8 @@ function loaderButton() {
     }, 1000);
 }
 
-
-
-
 submitButton.addEventListener('click', function (event) {
     event.preventDefault();
-
-
 
     // Recupero dei valori inseriti
     const selectedWork = workTypeSelect.value;
@@ -241,11 +218,6 @@ submitButton.addEventListener('click', function (event) {
     } else {
         resultMessage.classList.add('d-none');
         console.log("validazione errata");
-
-
     }
 
-
 });
-
-
