@@ -75,9 +75,6 @@ console.log(finalCalc('analisi', 10)); */
 const workTypeSelect = document.getElementById('work-type');
 /* console.log(workTypeSelect); */
 
-const calcButton = document.getElementById('calc-button');
-/* console.log(calcButton); */
-
 const resultParagraph = document.getElementById('result-int');
 /* console.log(resultParagraph); */
 
@@ -96,14 +93,59 @@ const validFeedbackMail = document.getElementById('valid-feedback-mail');
 const invalidFeedbackMail = document.getElementById('invalid-feedback-mail');
 /* console.log(invalidFeedbackMail); */
 
-const submitButton = document.querySelector('#calc-button');
+const submitButton = document.getElementById('calc-button');
 /* console.log(submitButton); */
 
 const resultMessage = document.getElementById("results-message")
 
 
-calcButton.addEventListener('click', function (event) {
+// spinner load
+const spinnerEl = submitButton.querySelector('#spinner')
+const statusSpan = submitButton.querySelector('.status');
+const originalTextStatus = statusSpan.innerHTML;
+
+/* // Status base del bottone
+submitButton.disabled = true;
+spinnerEl.classList.remove('d-none')
+statusSpan.innerHTML = 'Loading...'
+// timeout
+setTimeout(() => {
+
+    spinnerEl.classList.add('d-none')
+    statusSpan.innerHTML = originalTextStatus
+    submitButton.disabled = false;
+    resultMessage.innerHTML = `$ ${finalPrice}`;
+
+    if (isNaN(finalPrice)) {
+        resultMessage.innerHTML = "Nessun prezzo stimato";
+    }
+    console.log("loaderTimer")
+}, "1000"); */
+
+function loaderButton() {
+
+    submitButton.disabled = true;
+    spinnerEl.classList.remove('d-none');
+    statusSpan.innerHTML = 'Loading...';
+
+    setTimeout(() => {
+
+        spinnerEl.classList.add('d-none');
+        statusSpan.innerHTML = originalTextStatus;
+        submitButton.disabled = false;
+        resultMessage.classList.remove('d-none');
+
+        console.log("loaderTimer");
+    }, 1000);
+}
+
+
+
+
+submitButton.addEventListener('click', function (event) {
     event.preventDefault();
+
+
 
     // Recupero dei valori inseriti
     const selectedWork = workTypeSelect.value;
@@ -144,8 +186,6 @@ calcButton.addEventListener('click', function (event) {
     // Validazione cognome
     if (surnameInput.value.trim() === '') {/* (Inserire trim in una variabile) */
         surnameInput.classList.add('is-invalid');
-
-
     } else {
         surnameInput.classList.remove('is-invalid');
         surnameInput.classList.add('is-valid');
@@ -197,14 +237,14 @@ calcButton.addEventListener('click', function (event) {
     console.log(isCheckValid);
 
     if (isNameValid && isSurnameValid && isCheckValid && isMailValid) {
-        resultMessage.classList.remove('d-none');
-        console.log("validazione finale");
+        loaderButton();
     } else {
         resultMessage.classList.add('d-none');
         console.log("validazione errata");
 
 
     }
+
 
 });
 
