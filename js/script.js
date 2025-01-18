@@ -101,6 +101,9 @@ console.log(submitButton);
 
 const resultMessage = document.getElementById("results-message")
 
+const checBox = document.getElementById('required-check');
+
+
 calcButton.addEventListener('click', function (event) {
     event.preventDefault();
 
@@ -123,6 +126,9 @@ calcButton.addEventListener('click', function (event) {
 
     const surnameInput = document.getElementById('surname-id');
     console.log(surnameInput);
+
+    const checkBox = document.getElementById('checkbox-id'); // Recupero la checkbox
+    const checkBoxFeedback = document.getElementById('checkbox-feedback'); //  Div per feedback checkbox
 
     finalCalc(selectedWork, 10, isValidCode);
 
@@ -161,6 +167,8 @@ calcButton.addEventListener('click', function (event) {
         invalidFeedback.textContent = 'Codice non valido';
         resultMessage.classList.add('d-none');
     }
+
+
     // Email validazione tramite regex
     if (regex.test(emailValue)) {
         emailInput.classList.add('is-valid');
@@ -173,16 +181,30 @@ calcButton.addEventListener('click', function (event) {
         emailInput.classList.add('is-invalid');
         emailInput.classList.remove('is-valid');
         invalidFeedbackMail.textContent = 'Il formato della mail non è corretto o la mail non è inserita';
-
     }
-    // check su mail nome e cognome
-    if (emailValue && nameInput.value.trim() && surnameInput.value.trim()) {
-        resultMessage.classList.remove('d-none');
 
+
+
+    // check su mail nome e cognome
+    if (emailValue && nameInput.value.trim() && surnameInput.value.trim() && checBox()) {
+        resultMessage.classList.remove('d-none');
 
     } else {
         resultMessage.classList.add('d-none');
     }
+
+
+    if (!checkBox.checked) {
+        checkBox.classList.add('is-invalid');
+        checkBoxFeedback.textContent = 'Devi accettare i termini e le condizioni.';
+        isValid = false;
+    } else {
+        checkBox.classList.remove('is-invalid');
+        checkBox.classList.add('is-valid');
+        checkBoxFeedback.textContent = '';
+    }
+
+
 });
 
 
