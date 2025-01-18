@@ -168,7 +168,6 @@ calcButton.addEventListener('click', function (event) {
         resultMessage.classList.add('d-none');
     }
 
-
     // Email validazione tramite regex
     if (regex.test(emailValue)) {
         emailInput.classList.add('is-valid');
@@ -183,8 +182,6 @@ calcButton.addEventListener('click', function (event) {
         invalidFeedbackMail.textContent = 'Il formato della mail non è corretto o la mail non è inserita';
     }
 
-
-
     // check su mail nome e cognome
     if (emailValue && nameInput.value.trim() && surnameInput.value.trim() && checBox()) {
         resultMessage.classList.remove('d-none');
@@ -192,7 +189,6 @@ calcButton.addEventListener('click', function (event) {
     } else {
         resultMessage.classList.add('d-none');
     }
-
 
     if (!checkBox.checked) {
         checkBox.classList.add('is-invalid');
