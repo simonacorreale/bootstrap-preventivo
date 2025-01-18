@@ -50,54 +50,54 @@ function finalCalc(finalWork, hours = 10, discount = false) {
     const formattedPrice = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
         totalPrice);
 
-    console.log(formattedPrice);
+    /*  console.log(formattedPrice); */
 
     // Collego gli elementi html
     const resultInt = document.getElementById("result-int");
     const resultDec = document.getElementById("result-dec");
     const divisionNumber = formattedPrice.split(",");
-    console.log(divisionNumber);
+    /*   console.log(divisionNumber); */
 
     // Cambio lo stile delgi elementi separandoli
     resultInt.textContent = divisionNumber[0];
-    console.log(resultInt);
+    /*   console.log(resultInt); */
     resultDec.textContent = `,${divisionNumber[1]}`;
-    console.log(resultDec);
+    /*  console.log(resultDec); */
 
 };
 
-console.log(finalCalc('backend', 10));
+/* console.log(finalCalc('backend', 10));
 console.log(finalCalc('frontend', 10));
-console.log(finalCalc('analisi', 10));
+console.log(finalCalc('analisi', 10)); */
 
 // Collego gli elementi HTML 
 
 const workTypeSelect = document.getElementById('work-type');
-console.log(workTypeSelect);
+/* console.log(workTypeSelect); */
 
 const calcButton = document.getElementById('calc-button');
-console.log(calcButton);
+/* console.log(calcButton); */
 
 const resultParagraph = document.getElementById('result-int');
-console.log(resultParagraph);
+/* console.log(resultParagraph); */
 
 const validFeedback = document.getElementById('valid-feedback');
-console.log(validFeedback);
+/* console.log(validFeedback); */
 
 const invalidFeedback = document.getElementById('invalid-feedback');
-console.log(invalidFeedback);
+/* console.log(invalidFeedback); */
 
 const promoCodeInput = document.getElementById('promo-code');
-console.log(promoCodeInput);
+/* console.log(promoCodeInput); */
 
 const validFeedbackMail = document.getElementById('valid-feedback-mail');
-console.log(validFeedbackMail);
+/* console.log(validFeedbackMail); */
 
 const invalidFeedbackMail = document.getElementById('invalid-feedback-mail');
-console.log(invalidFeedbackMail);
+/* console.log(invalidFeedbackMail); */
 
 const submitButton = document.querySelector('#calc-button');
-console.log(submitButton);
+/* console.log(submitButton); */
 
 const resultMessage = document.getElementById("results-message")
 
@@ -111,59 +111,62 @@ calcButton.addEventListener('click', function (event) {
     const enteredCode = promoCodeInput.value.trim().toUpperCase();
 
     const isValidCode = promoCode.includes(enteredCode);
-
     const emailInput = document.getElementById('valid-email');
     const emailValue = emailInput.value.trim();
-    console.log(emailValue);
 
     const regex = /^[a-zA-Z0-9._%+-]+@gmail\.(com|it)$/;
-
     const nameInput = document.getElementById('name-id');
-    console.log(nameInput);
-
     const surnameInput = document.getElementById('surname-id');
-    console.log(surnameInput);
 
     const checkBox = document.getElementById('checkbox-id'); // Recupero la checkbox
-    const checkBoxFeedback = document.getElementById('checkbox-feedback'); //  Div per feedback checkbox
+
 
     finalCalc(selectedWork, 10, isValidCode);
 
-    let isValid = true;
+    let isNameValid = false;
+    let isSurnameValid = false;
+    let isCheckValid = false;
+    let isMailValid = false;
+
 
     // Validazione nome
 
-    if (nameInput.value.trim() === '') {
+    if (nameInput.value.trim() === '') { /* (Inserire trim in una variabile) */
         nameInput.classList.add('is-invalid');
-        isValid = false;
+
     } else {
         nameInput.classList.remove('is-invalid');
         nameInput.classList.add('is-valid');
+        isNameValid = true;
+        console.log("nome corretta");
     }
 
     // Validazione cognome
-    if (surnameInput.value.trim() === '') {
+    if (surnameInput.value.trim() === '') {/* (Inserire trim in una variabile) */
         surnameInput.classList.add('is-invalid');
-        isValid = false;
+
+
     } else {
         surnameInput.classList.remove('is-invalid');
         surnameInput.classList.add('is-valid');
+        isSurnameValid = true;
+        console.log("cognome corretta");
     }
 
     // Codice validazione
     if (enteredCode === '') {
         promoCodeInput.classList.remove('is-valid', 'is-invalid');
-        resultMessage.classList.remove('d-none');
+
     } else if (isValidCode) {
         promoCodeInput.classList.add('is-valid');
         promoCodeInput.classList.remove('is-invalid');
         validFeedback.textContent = 'Codice promo valido'
-        resultMessage.classList.remove('d-none');
+
     } else {
         promoCodeInput.classList.add('is-invalid');
         promoCodeInput.classList.remove('is-valid');
         invalidFeedback.textContent = 'Codice non valido';
-        resultMessage.classList.add('d-none');
+
     }
 
     // Email validazione tramite regex
@@ -171,30 +174,36 @@ calcButton.addEventListener('click', function (event) {
         emailInput.classList.add('is-valid');
         emailInput.classList.remove('is-invalid');
         validFeedbackMail.textContent = 'Mail corretta';
+        console.log("email corretta");
+        isMailValid = true;
 
-
-        calcButton.disabled = false;
     } else {
         emailInput.classList.add('is-invalid');
         emailInput.classList.remove('is-valid');
         invalidFeedbackMail.textContent = 'Il formato della mail non è corretto o la mail non è inserita';
+
     }
 
     if (!checkBox.checked) {
         checkBox.classList.add('is-invalid');
-        checkBoxFeedback.textContent = 'Devi accettare i termini e le condizioni.';
-        isValid = false;
+
     } else {
         checkBox.classList.remove('is-invalid');
         checkBox.classList.add('is-valid');
-        checkBoxFeedback.textContent = '';
+        console.log("checkBox corretta");
+        isCheckValid = true;
     }
-
     // Abilita il risultato se valido 
-    if (isValid && checkBox.checked && emailValue && nameInput.value.trim() && surnameInput.value.trim()) {
+    console.log(isCheckValid);
+
+    if (isNameValid && isSurnameValid && isCheckValid && isMailValid) {
         resultMessage.classList.remove('d-none');
+        console.log("validazione finale");
     } else {
         resultMessage.classList.add('d-none');
+        console.log("validazione errata");
+
+
     }
 
 });
