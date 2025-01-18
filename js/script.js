@@ -49,6 +49,7 @@ function finalCalc(finalWork, hours = 10, discount = false) {
     const totalPrice = total.toFixed(2);
     const formattedPrice = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
         totalPrice);
+
     console.log(formattedPrice);
 
     // Collego gli elementi html
@@ -56,6 +57,7 @@ function finalCalc(finalWork, hours = 10, discount = false) {
     const resultDec = document.getElementById("result-dec");
     const divisionNumber = formattedPrice.split(",");
     console.log(divisionNumber);
+
     // Cambio lo stile delgi elementi separandoli
     resultInt.textContent = divisionNumber[0];
     console.log(resultInt);
@@ -68,8 +70,8 @@ console.log(finalCalc('backend', 10));
 console.log(finalCalc('frontend', 10));
 console.log(finalCalc('analisi', 10));
 
-
 // Collego gli elementi HTML 
+
 const workTypeSelect = document.getElementById('work-type');
 console.log(workTypeSelect);
 
@@ -97,61 +99,90 @@ console.log(invalidFeedbackMail);
 const submitButton = document.querySelector('#calc-button');
 console.log(submitButton);
 
-
 const resultMessage = document.getElementById("results-message")
 
 calcButton.addEventListener('click', function (event) {
     event.preventDefault();
 
-    const spinnerEl = submitButton.querySelector('#spinner')
-    const statusSpan = submitButton.querySelector('.status');
-    const originalTextStatus = statusSpan.innerHTML;
-    // Status base del bottone
-    submitButton.disabled = true;
-    spinnerEl.classList.remove('d-none')
-    statusSpan.innerHTML = 'Loading...'
-    resultMessage.classList.add('d-none')
-
     // Recupero dei valori inseriti
     const selectedWork = workTypeSelect.value;
+
     const enteredCode = promoCodeInput.value.trim().toUpperCase();
+
     const isValidCode = promoCode.includes(enteredCode);
+
     const emailInput = document.getElementById('valid-email');
+
     const emailValue = emailInput.value.trim();
+    console.log(emailValue);
+
     const regex = /^[a-zA-Z0-9._%+-]+@gmail\.(com|it)$/;
 
+    const nameInput = document.getElementById('name-id');
+    console.log(nameInput);
+
+    const surnameInput = document.getElementById('surname-id');
+    console.log(surnameInput);
+
     finalCalc(selectedWork, 10, isValidCode);
+
+    let isValid = true;
+
+    // Validazione nome
+    if (nameInput.value.trim() === '') {
+        nameInput.classList.add('is-invalid');
+        isValid = false;
+    } else {
+        nameInput.classList.remove('is-invalid');
+        nameInput.classList.add('is-valid');
+    }
+
+    // Validazione cognome
+    if (surnameInput.value.trim() === '') {
+        surnameInput.classList.add('is-invalid');
+        isValid = false;
+    } else {
+        surnameInput.classList.remove('is-invalid');
+        surnameInput.classList.add('is-valid');
+    }
 
     // Codice validazione
     if (enteredCode === '') {
         promoCodeInput.classList.remove('is-valid', 'is-invalid');
+        resultMessage.classList.remove('d-none');
     } else if (isValidCode) {
         promoCodeInput.classList.add('is-valid');
         promoCodeInput.classList.remove('is-invalid');
         validFeedback.textContent = 'Codice promo valido'
+        resultMessage.classList.remove('d-none');
     } else {
         promoCodeInput.classList.add('is-invalid');
         promoCodeInput.classList.remove('is-valid');
         invalidFeedback.textContent = 'Codice non valido';
+        resultMessage.classList.add('d-none');
     }
-
     // Email validazione tramite regex
     if (regex.test(emailValue)) {
         emailInput.classList.add('is-valid');
         emailInput.classList.remove('is-invalid');
         validFeedbackMail.textContent = 'Mail corretta';
+
+        // Abilita il risultato se valido 
+        calcButton.disabled = false;
     } else {
         emailInput.classList.add('is-invalid');
         emailInput.classList.remove('is-valid');
         invalidFeedbackMail.textContent = 'Il formato della mail non è corretto o la mail non è inserita';
-    }
 
-    // Simulazione del caricamento (1 secondo)
-    setTimeout(() => {
-        spinnerEl.classList.add('d-none');           // Nasconde lo spinner
-        statusSpan.innerHTML = originalTextStatus;   // Ripristina il testo del bottone
-        submitButton.disabled = false;              // Riabilita il bottone
-        console.log("Loader completato");
-        resultMessage.classList.remove('d-none')
-    }, 1000);
+    }
+    // check su mail nome e cognome
+    if (emailValue && nameInput.value.trim() && surnameInput.value.trim()) {
+        resultMessage.classList.remove('d-none');
+
+
+    } else {
+        resultMessage.classList.add('d-none');
+    }
 });
+
+

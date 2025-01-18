@@ -42,17 +42,17 @@
                 <div class="col-lg-8 col-md-12">
                     <h1> Richiesta Preventivo </h1>
                     <p> Compila il form per richiedere un preventivo per i nostri servizi di sviluppo.</p>
-                    <form>
+                    <form method="" class="needs-validation">
                         <!--Nome-->
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="name-id">
+                            <input type="text" class="form-control" id="name-id" required>
                         </div>
                         <!--Nome-->
                         <!--Cognome-->
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Cognome</label>
-                            <input type="text" class="form-control" id="surname-id">
+                            <input type="text" class="form-control" id="surname-id" required>
                         </div>
                         <!--Cognome-->
                         <!--Email-->
@@ -60,12 +60,10 @@
                             <label for="valid-email" class="form-label">Indirizzo Email</label>
                             <input type="email" class="form-control" id="valid-email" aria-describedby="emailHelp"
                                 required>
-
                             <!-- Feedback positivo -->
                             <div id="valid-feedback-mail" class="valid-feedback">
                                 La mail è corretta!
                             </div>
-
                             <!-- Feedback negativo -->
                             <div id="invalid-feedback-mail" class="invalid-feedback">
                                 Il formato della mail non è corretto o la mail non è inserita.
@@ -115,7 +113,7 @@
                             </div>
                             <div>
                                 <h5>Prezzo Finale</h5>
-                                <div id="results-message" class=" justify-content-start">
+                                <div id="results-message" class=" justify-content-start d-none">
                                     <strong>
                                         <span id="result-int"></span>
                                     </strong>
