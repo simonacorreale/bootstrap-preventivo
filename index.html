@@ -10,9 +10,9 @@
 </head>
 
 <body>
-    <!--Navbar-->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-        <div class="container ">
+        <div class="container">
             <a class="navbar-brand" href="#">Bool Factory</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
                 aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,111 +33,86 @@
             </div>
         </div>
     </nav>
-    <!--Navbar-->
-    <!--Main container-->
+    <!-- Navbar -->
+
+    <!-- Main container -->
     <main class="mt-5 mb-5">
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-12">
-                    <h1> Richiesta Preventivo </h1>
-                    <p> Compila il form per richiedere un preventivo per i nostri servizi di sviluppo.</p>
-                    <form method="" class="needs-validation">
-                        <!--Nome-->
+                    <h1>Richiesta Preventivo</h1>
+                    <p>Compila il form per richiedere un preventivo per i nostri servizi di sviluppo.</p>
+                    <form method="get" class="needs-validation">
+                        <!-- Nome -->
                         <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Nome</label>
+                            <label for="name-id" class="form-label">Nome</label>
                             <input type="text" class="form-control" id="name-id" required>
-                            <!-- Feedback negativo -->
-                            <div id="invalid-feedback-mail" class="invalid-feedback">
-                                Il campo risulta non compilato
-                            </div>
                         </div>
-                        <!--Nome-->
-                        <!--Cognome-->
+                        <!-- Cognome -->
                         <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Cognome</label>
+                            <label for="surname-id" class="form-label">Cognome</label>
                             <input type="text" class="form-control" id="surname-id" required>
                         </div>
-                        <!-- Feedback negativo -->
-                        <div id="invalid-feedback-mail" class="invalid-feedback">
-                            Il campo risulta non compilato
-                        </div>
-
-                        <!--Cognome-->
-                        <!--Email-->
+                        <!-- Email -->
                         <div class="mb-3">
                             <label for="valid-email" class="form-label">Indirizzo Email</label>
                             <input type="email" class="form-control" id="valid-email" aria-describedby="emailHelp"
                                 required>
-                            <!-- Feedback positivo -->
-                            <div id="valid-feedback-mail" class="valid-feedback">
-                                La mail è corretta!
-                            </div>
-                            <!-- Feedback negativo -->
-                            <div id="invalid-feedback-mail" class="invalid-feedback">
-                                Il formato della mail non è corretto o la mail non è inserita.
-                            </div>
+                            <div id="valid-feedback-mail" class="valid-feedback">La mail è corretta!</div>
+                            <div id="invalid-feedback-mail" class="invalid-feedback">Il formato della mail non è
+                                corretto o la mail non è inserita.</div>
                         </div>
-                        <!--Email-->
-                        <!--Select-->
+                        <!-- Tipo di lavoro -->
                         <div class="mb-3">
-                            <label for="infolabel" class="form-label">Tipo di lavoro</label>
-                            <select id="work-type" class="form-select" aria-label="Default select example" required>
+                            <label for="work-type" class="form-label">Tipo di lavoro</label>
+                            <select id="work-type" class="form-select">
                                 <option value="backend">Sviluppo backend</option>
                                 <option value="frontend">Sviluppo frontend</option>
                                 <option value="analisi">Analisi progettuale</option>
                             </select>
                         </div>
-                        <!--Select-->
-                        <!--Comment area-->
+                        <!-- Descrizione lavoro -->
                         <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Tipo di lavoro (optional)</label>
-                            <textarea class="form-control" placeholder="Inserisci la descrizione del mestiere"
-                                id="floatingTextarea2" style="height: 100px"></textarea>
+                            <label for="floatingTextarea2" class="form-label">Descrizione del lavoro (opzionale)</label>
+                            <textarea class="form-control" id="floatingTextarea2"
+                                placeholder="Inserisci la descrizione del mestiere" style="height: 100px"></textarea>
                         </div>
-                        <!--Comment area-->
-                        <!--Promo code-->
-                        <div class="mb-3 mt-3">
+                        <!-- Codice promozionale -->
+                        <div class="mb-3">
                             <label for="promo-code" class="form-label">Codice promozionale (opzionale)</label>
-                            <input type="TEXT" class="form-control" id="promo-code" aria-describedby="promo code">
+                            <input type="text" class="form-control" id="promo-code">
                             <div id="valid-feedback" class="valid-feedback"></div>
-                            <div id="invalid-feedback" class="invalid-feedback"> </div>
+                            <div id="invalid-feedback" class="invalid-feedback"></div>
                         </div>
-                        <!--Promo code-->
-                        <!--Termini e condizioni-->
-                        <div class=" mb-3 form-check mt-3">
+                        <!-- Privacy policy -->
+                        <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="checkbox-id" required>
-                            <label class="form-check-label" for="exampleCheck1">Accetta privacy policy</label>
+                            <label class="form-check-label" for="checkbox-id">Accetta privacy policy</label>
                         </div>
-                        <!--Termini e condizioni-->
-                        <!--CTA + CALC-->
-                        <div
-                            class="container p-5 d-flex flex-column flex-md-row justify-content-between mb-3 text-center">
+                        <!-- Pulsante calcolo -->
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button id="calc-button" class="btn btn-primary" type="submit">
+                                <span id="spinner" class="d-none spinner-border spinner-border-sm"
+                                    aria-hidden="true"></span>
+                                <span class="status" role="status">Calcola prezzo</span>
+                            </button>
                             <div>
-                                <button id="calc-button" class="btn btn-primary" type="submit">
-                                    <span id="spinner" class="d-none spinner-border spinner-border-sm"
-                                        aria-hidden="true"></span>
-                                    <span class="status" role="status">Calcola prezzo</span>
-                                </button>
-                            </div>
-                            <div class="mt-3">
                                 <h5>Prezzo Finale</h5>
-                                <div id="results-message" class=" justify-content-start d-none">
-                                    <strong>
-                                        <span id="result-int"></span>
-                                    </strong>
+                                <div id="results-message" class="d-none">
+                                    <strong><span id="result-int"></span></strong>
                                     <span id="result-dec"></span>
                                 </div>
                             </div>
                         </div>
+                    </form>
                 </div>
-                </form>
-                <!--Card-->
-                <div class="col-lg-4 col-md-12 ">
-                    <div class="card w-100" style="width: 18rem;">
-                        <img src="./img/Placeholder.png" class="card-img-top" alt="...">
+                <!-- Card contatti -->
+                <div class="col-lg-4 col-md-12">
+                    <div class="card w-100">
+                        <img src="./img/Placeholder.png" class="card-img-top" alt="Contatti">
                         <div class="card-body">
                             <h5 class="card-title">I nostri contatti</h5>
-                            <p class="card-text"> Se hai bisogno di aiuto puoi contattarci: </p>
+                            <p class="card-text">Se hai bisogno di aiuto puoi contattarci:</p>
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">help@boolfactory.test</li>
@@ -148,27 +123,19 @@
                         </div>
                     </div>
                 </div>
-                <!--Card-->
             </div>
         </div>
     </main>
-    <!--Main container-->
-    <!--Footer-->
+    <!-- Footer -->
     <footer class="bg-dark text-white text-center py-3">
-        <div class="container">
-            <p class="mb-0">© 2024 - Tutti i diritti riservati.</p>
-        </div>
+        <p class="mb-0">© 2024 - Tutti i diritti riservati.</p>
     </footer>
-    <!--Footer-->
-    <!--Script-->
-    <script type="text/javascript" src="./js/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+
+    <!-- Script -->
+    <script src="./js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
-    <!--Script-->
 </body>
 
 </html>
