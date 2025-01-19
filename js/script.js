@@ -219,5 +219,4 @@ submitButton.addEventListener('click', function (event) {
         resultMessage.classList.add('d-none');
         console.log("validazione errata");
     }
-
 });

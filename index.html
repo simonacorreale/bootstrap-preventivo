@@ -90,17 +90,21 @@
                             <label class="form-check-label" for="checkbox-id">Accetta privacy policy</label>
                         </div>
                         <!-- Pulsante calcolo -->
-                        <div class="d-flex justify-content-between align-items-center">
-                            <button id="calc-button" class="btn btn-primary" type="submit">
-                                <span id="spinner" class="d-none spinner-border spinner-border-sm"
-                                    aria-hidden="true"></span>
-                                <span class="status" role="status">Calcola prezzo</span>
-                            </button>
-                            <div>
+                        <div class=" d-flex  justify-content-between">
+                            <div class="m-5">
+                                <button id="calc-button" class="btn btn-primary" type="submit">
+                                    <span id="spinner" class="d-none spinner-border spinner-border-sm"
+                                        aria-hidden="true"></span>
+                                    <span class="status" role="status">Calcola prezzo</span>
+                                </button>
+                            </div>
+                            <div class="m-5">
                                 <h5>Prezzo Finale</h5>
-                                <div id="results-message" class="d-none">
-                                    <strong><span id="result-int"></span></strong>
-                                    <span id="result-dec"></span>
+                                <div id="results-message" class="d-none d-flex">
+                                    <strong>
+                                        <h4 id="result-int"></h4>
+                                    </strong>
+                                    <h5 id="result-dec"></h5>
                                 </div>
                             </div>
                         </div>
