@@ -16,8 +16,9 @@ Per la validazione codice:
 Per il loader
 1) Al click del bottone calcola preventivo compare un loader di qualche secondo
 2) compare il risultato
-3) il bottone diventa grigio fino a che non si modifica nuovamente il form
 */
+
+//#region___CALCOLO PREZZO PROFESSIONE___
 
 // Array di codice inserito
 const promoCode = ["YHDNU32", "JANJC63", "PWKCN25", "SJDPO96", "POCIE24"];
@@ -71,6 +72,10 @@ function finalCalc(finalWork, hours = 10, discount = false) {
 console.log(finalCalc('frontend', 10));
 console.log(finalCalc('analisi', 10)); */
 
+//#endregion___CALCOLO PREZZO PROFESSIONE___
+
+//#region__ELEMENTI HTML___
+
 // Collego gli elementi HTML 
 
 const workTypeSelect = document.getElementById('work-type');
@@ -88,6 +93,9 @@ const spinnerEl = submitButton.querySelector('#spinner');
 const statusSpan = submitButton.querySelector('.status');
 const originalTextStatus = statusSpan.innerHTML;
 
+//#endregion__ELEMENTI HTML___
+
+//#region___FUNZIONE DI LOADING PER IL LOADER___
 function loaderButton() {
 
     submitButton.disabled = true;
@@ -104,6 +112,9 @@ function loaderButton() {
         console.log("loaderTimer");
     }, 1000);
 }
+//#endregion___FUNZIONE DI LOADING PER IL LOADER___
+
+//#region___CLICK NEL BOTTONE___
 submitButton.addEventListener('click', function (event) {
     event.preventDefault();
 
@@ -196,3 +207,5 @@ submitButton.addEventListener('click', function (event) {
         /* console.log("validazione errata"); */
     }
 });
+//#endregion___FUNZIONE DI CLICK NEL BOTTONE___
+
