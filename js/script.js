@@ -77,10 +77,6 @@ const workTypeSelect = document.getElementById('work-type');
 /* console.log(workTypeSelect); */
 const resultParagraph = document.getElementById('result-int');
 /* console.log(resultParagraph); */
-const validFeedback = document.getElementById('valid-feedback');
-/* console.log(validFeedback); */
-const invalidFeedback = document.getElementById('invalid-feedback');
-/* console.log(invalidFeedback); */
 const promoCodeInput = document.getElementById('promo-code');
 /* console.log(promoCodeInput); */
 const submitButton = document.getElementById('calc-button');
@@ -151,8 +147,7 @@ submitButton.addEventListener('click', function (event) {
         surnameInput.classList.remove('is-invalid');
         surnameInput.classList.add('is-valid');
         isSurnameValid = true;
-        console.log("cognome corretta");
-
+        /*  console.log("cognome corretta"); */
 
     }
     // Codice validazione
@@ -162,6 +157,7 @@ submitButton.addEventListener('click', function (event) {
     } else if (isValidCode) {
         promoCodeInput.classList.add('is-valid');
         promoCodeInput.classList.remove('is-invalid');
+
     } else {
         promoCodeInput.classList.add('is-invalid');
         promoCodeInput.classList.remove('is-valid');
@@ -197,6 +193,6 @@ submitButton.addEventListener('click', function (event) {
         loaderButton();
     } else {
         resultMessage.classList.add('d-none');
-        console.log("validazione errata");
+        /* console.log("validazione errata"); */
     }
 });
