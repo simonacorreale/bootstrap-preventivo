@@ -47,18 +47,19 @@
                         <div class="mb-3">
                             <label for="name-id" class="form-label">Nome</label>
                             <input type="text" class="form-control" id="name-id" required>
+                            <div id="invalid-feedback-surname-name" class="invalid-feedback">Campo non compilato</div>
                         </div>
                         <!-- Cognome -->
                         <div class="mb-3">
                             <label for="surname-id" class="form-label">Cognome</label>
                             <input type="text" class="form-control" id="surname-id" required>
+                            <div id="invalid-feedback-surname-name" class="invalid-feedback">Campo non compilato</div>
                         </div>
                         <!-- Email -->
                         <div class="mb-3">
                             <label for="valid-email" class="form-label">Indirizzo Email</label>
                             <input type="email" class="form-control" id="valid-email" aria-describedby="emailHelp"
                                 required>
-                            <div id="valid-feedback-mail" class="valid-feedback">La mail è corretta!</div>
                             <div id="invalid-feedback-mail" class="invalid-feedback">Il formato della mail non è
                                 corretto o la mail non è inserita.</div>
                         </div>
@@ -81,8 +82,8 @@
                         <div class="mb-3">
                             <label for="promo-code" class="form-label">Codice promozionale (opzionale)</label>
                             <input type="text" class="form-control" id="promo-code">
-                            <div id="valid-feedback" class="valid-feedback"></div>
-                            <div id="invalid-feedback" class="invalid-feedback"></div>
+                            <div id="valid-feedback" class="valid-feedback"> Codice valido</div>
+                            <div id="invalid-feedback" class="invalid-feedback">Codice non valido</div>
                         </div>
                         <!-- Privacy policy -->
                         <div class="mb-3 form-check">
@@ -101,7 +102,7 @@
                             </div>
                             <div class="p-4">
                                 <h5>Prezzo Finale</h5>
-                                <div id="results-message" class="d-none d-flex">
+                                <div id="results-message" class="d-none d-flex justify-content-center">
                                     <strong>
                                         <h4 id="result-int"></h4>
                                     </strong>

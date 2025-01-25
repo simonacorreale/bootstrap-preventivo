@@ -24,6 +24,7 @@ const promoCode = ["YHDNU32", "JANJC63", "PWKCN25", "SJDPO96", "POCIE24"];
 
 // Funzione per calcolare il prezzo finale (test con sconto)
 function finalCalc(finalWork, hours = 10, discount = false) {
+
     let workTime;
 
     switch (finalWork.toLowerCase()) {
@@ -74,33 +75,20 @@ console.log(finalCalc('analisi', 10)); */
 
 const workTypeSelect = document.getElementById('work-type');
 /* console.log(workTypeSelect); */
-
 const resultParagraph = document.getElementById('result-int');
 /* console.log(resultParagraph); */
-
 const validFeedback = document.getElementById('valid-feedback');
 /* console.log(validFeedback); */
-
 const invalidFeedback = document.getElementById('invalid-feedback');
 /* console.log(invalidFeedback); */
-
 const promoCodeInput = document.getElementById('promo-code');
 /* console.log(promoCodeInput); */
-
-const validFeedbackMail = document.getElementById('valid-feedback-mail');
-/* console.log(validFeedbackMail); */
-
-const invalidFeedbackMail = document.getElementById('invalid-feedback-mail');
-/* console.log(invalidFeedbackMail); */
-
 const submitButton = document.getElementById('calc-button');
 /* console.log(submitButton); */
-
-const resultMessage = document.getElementById("results-message")
-
+const resultMessage = document.getElementById("results-message");
 
 // spinner load
-const spinnerEl = submitButton.querySelector('#spinner')
+const spinnerEl = submitButton.querySelector('#spinner');
 const statusSpan = submitButton.querySelector('.status');
 const originalTextStatus = statusSpan.innerHTML;
 
@@ -120,13 +108,11 @@ function loaderButton() {
         console.log("loaderTimer");
     }, 1000);
 }
-
 submitButton.addEventListener('click', function (event) {
     event.preventDefault();
 
     // Recupero dei valori inseriti
     const selectedWork = workTypeSelect.value;
-
     const enteredCode = promoCodeInput.value.trim().toUpperCase();
 
     const isValidCode = promoCode.includes(enteredCode);
@@ -134,11 +120,10 @@ submitButton.addEventListener('click', function (event) {
     const emailValue = emailInput.value.trim();
 
     const regex = /^[a-zA-Z0-9._%+-]+@gmail\.(com|it)$/;
+
     const nameInput = document.getElementById('name-id');
     const surnameInput = document.getElementById('surname-id');
-
     const checkBox = document.getElementById('checkbox-id'); // Recupero la checkbox
-
 
     finalCalc(selectedWork, 10, isValidCode);
 
@@ -147,10 +132,8 @@ submitButton.addEventListener('click', function (event) {
     let isCheckValid = false;
     let isMailValid = false;
 
-
     // Validazione nome
-
-    if (nameInput.value.trim() === '') { /* (Inserire trim in una variabile) */
+    if (nameInput.value.trim() === '') {
         nameInput.classList.add('is-invalid');
 
     } else {
@@ -161,15 +144,17 @@ submitButton.addEventListener('click', function (event) {
     }
 
     // Validazione cognome
-    if (surnameInput.value.trim() === '') {/* (Inserire trim in una variabile) */
+    if (surnameInput.value.trim() === '') {
         surnameInput.classList.add('is-invalid');
+
     } else {
         surnameInput.classList.remove('is-invalid');
         surnameInput.classList.add('is-valid');
         isSurnameValid = true;
         console.log("cognome corretta");
-    }
 
+
+    }
     // Codice validazione
     if (enteredCode === '') {
         promoCodeInput.classList.remove('is-valid', 'is-invalid');
@@ -177,12 +162,9 @@ submitButton.addEventListener('click', function (event) {
     } else if (isValidCode) {
         promoCodeInput.classList.add('is-valid');
         promoCodeInput.classList.remove('is-invalid');
-        validFeedback.textContent = 'Codice promo valido'
-
     } else {
         promoCodeInput.classList.add('is-invalid');
         promoCodeInput.classList.remove('is-valid');
-        invalidFeedback.textContent = 'Codice non valido';
 
     }
 
@@ -190,15 +172,12 @@ submitButton.addEventListener('click', function (event) {
     if (regex.test(emailValue)) {
         emailInput.classList.add('is-valid');
         emailInput.classList.remove('is-invalid');
-        validFeedbackMail.textContent = 'Mail corretta';
         console.log("email corretta");
         isMailValid = true;
 
     } else {
         emailInput.classList.add('is-invalid');
         emailInput.classList.remove('is-valid');
-        invalidFeedbackMail.textContent = 'Il formato della mail non è corretto o la mail non è inserita';
-
     }
 
     if (!checkBox.checked) {
@@ -210,6 +189,7 @@ submitButton.addEventListener('click', function (event) {
         console.log("checkBox corretta");
         isCheckValid = true;
     }
+
     // Abilita il risultato se valido 
     console.log(isCheckValid);
 
