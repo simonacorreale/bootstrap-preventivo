@@ -47,6 +47,7 @@ function finalCalc(finalWork, hours = 10, discount = false) {
     if (discount) {
         total *= 0.8;
     }
+
     // Inserisco il risultato in forma umana
     const totalPrice = total.toFixed(2);
     const formattedPrice = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
@@ -122,11 +123,11 @@ submitButton.addEventListener('click', function (event) {
     const selectedWork = workTypeSelect.value;
     const enteredCode = promoCodeInput.value.trim().toUpperCase();
 
-    const isValidCode = promoCode.includes(enteredCode);
+    const isValidCode = promoCode.includes(enteredCode);// Cambio valore true/false se incluso nell'array
     const emailInput = document.getElementById('valid-email');
     const emailValue = emailInput.value.trim();
 
-    const regex = /^[a-zA-Z0-9._%+-]+@gmail\.(com|it)$/;
+    const regex = /^[a-zA-Z0-9._%+-]+@gmail\.(com|it)$/;// ->https://regexr.com/<-
 
     const nameInput = document.getElementById('name-id');
     const surnameInput = document.getElementById('surname-id');
