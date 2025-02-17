@@ -127,7 +127,7 @@ submitButton.addEventListener('click', function (event) {
     const emailInput = document.getElementById('valid-email');
     const emailValue = emailInput.value.trim();
 
-    const regex = /^[a-zA-Z0-9._%+-]+@gmail\.(com|it)$/;// ->https://regexr.com/<-
+    const regex = /^[a-zA-Z0-9.]+@gmail\.(com|it)$/;// ->https://regexr.com/<-
 
     const nameInput = document.getElementById('name-id');
     const surnameInput = document.getElementById('surname-id');
