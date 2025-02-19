@@ -50,6 +50,7 @@ function finalCalc(finalWork, hours = 10, discount = false) {
 
     // Inserisco il risultato in forma umana
     const totalPrice = total.toFixed(2);
+    // Serve per formattare il numero secondo la convenzione tedesca
     const formattedPrice = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
         totalPrice);
 
@@ -127,7 +128,7 @@ submitButton.addEventListener('click', function (event) {
     const emailInput = document.getElementById('valid-email');
     const emailValue = emailInput.value.trim();
 
-    const regex = /^[a-zA-Z0-9.]+@gmail\.(com|it)$/;// ->https://regexr.com/<-
+    const regex = /^[a-zA-Z0-9._%+-]+@gmail\.(com|it)$/;// ->https://regexr.com/
 
     const nameInput = document.getElementById('name-id');
     const surnameInput = document.getElementById('surname-id');
@@ -180,7 +181,7 @@ submitButton.addEventListener('click', function (event) {
     if (regex.test(emailValue)) {
         emailInput.classList.add('is-valid');
         emailInput.classList.remove('is-invalid');
-        console.log("email corretta");
+        /*  console.log("email corretta"); */
         isMailValid = true;
 
     } else {
